@@ -1,0 +1,8 @@
+conda create --name [nombre del proyecto] [librerias]
+source activate platzi_data
+source deactivate 
+
+conda env list
+
+consa remove --name [nombre-ambiente] --all
+
