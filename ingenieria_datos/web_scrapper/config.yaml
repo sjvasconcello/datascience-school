@@ -1,0 +1,13 @@
+news_sites:
+  rancaguino:
+    url: https://www.elrancaguino.cl
+    queries:
+      homepage_article_links: ".jeg_postblock_content a"
+  latercera:
+    url: https://www.latercera.com/
+    queries:
+      homepage_article_links: ".headline a"
+  emol:
+    url: https://www.emol.com/
+    queries:
+      homepage_article_links: ".divico_txt a"
