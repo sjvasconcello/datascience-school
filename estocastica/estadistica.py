@@ -5,7 +5,7 @@ import math
 def media(x):
     return sum(x) / len(x)
 
-def varianza(x):
+def varianza(X):
     mu = media(X)
     
     acumulador = 0

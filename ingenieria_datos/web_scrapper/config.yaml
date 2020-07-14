@@ -4,7 +4,7 @@ news_sites:
     queries:
       homepage_article_links: ".jeg_postblock_content a"
       article_title: ".entry-header h1"
-      article_body: ".entry-content p"
+      article_body: ".content-inner p"
 
   latercera:
     url: https://www.latercera.com/
@@ -17,6 +17,6 @@ news_sites:
     url: https://www.emol.com/
     queries:
       homepage_article_links: ".divico_txt a"
-      article_title: ".cuDetalle_cuTitular_contNoticia h1"
+      article_title: ".cont_iz_titulobajada h1"
       article_body: ".EmolText div"
       
