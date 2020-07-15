@@ -10,8 +10,6 @@ logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 
-stop_words = set(stopwords.words("spanish"))
-
 
 def main(filename):
     logger.info("Starting cleaning process")
@@ -22,7 +20,11 @@ def main(filename):
     df = _extract_host(df)
     df = _generate_uid_for_rows(df)
     df = _remove_new_lines_from_body(df)
-    df = _tokenize_column(df)
+    df = _tokenize_column(df, "title")
+    df = _tokenize_column(df, "body")
+    df = _remove_duplicate_entries(df, "title")
+    df = _drop_rows_with_missing_values(df)
+    _save_data(df, filename)
     return df
 
 
@@ -79,20 +81,37 @@ def _remove_new_lines_from_body(df):
 
 
 def _tokenize_column(df, column_name):
-    tokenize = df.dropna().apply(
+    logger.info(
+        'Calculating the number of unique tokens in {}'.format(column_name))
+
+    stop_words = set(stopwords.words("spanish"))
+
+    n_token = (df.dropna().apply(
         lambda row: nltk.word_tokenize(row[column_name]), axis=1)
     .apply(lambda tokens: list(filter(lambda token: token.isalpha(), tokens)))
     .apply(lambda tokens: list(map(lambda token: token.lower(), tokens)))
     .apply(lambda word_list: list(filter(lambda word: word not in stop_words, word_list)))
-    .apply(lambda valid_word_list: len(valid_word_list))
+    .apply(lambda valid_word_list: len(valid_word_list)))
 
-    df["n_tokens_title"] = tokenize
+    df["n_tokens_"+column_name] = n_token
 
     return df
 
 
-el_rancaguino["n_tokens_title"] = tokenize_column(el_rancaguino, "title")
 
+def _remove_duplicate_entries(df, column_name):
+    logger.info("Remove new lines from body")
+    df.drop_duplicates(subset=[column_name], keep="first", inplace=True)
+    return df
+
+def _drop_rows_with_missing_values(df):
+    logger.info("Dropping rows with missing values")
+    return df.dropna()
+
+def _save_data(df, filename):
+    clean_filename = "clean_{}".format(filename)
+    logger.info("Dropping rows with missing values: {}".format(clean_filename))
+    df.to_csv(clean_filename)    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
