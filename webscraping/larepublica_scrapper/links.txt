@@ -1,0 +1,4 @@
+Links = //h2[@class="headline"]/a/@href, //div[@class="news V_Title_Img"]/h2/a/@href
+Titulo = //div[@class="mb-auto"]/h2/a/text()
+Resumen = '//div[@class="html-content"]/p[not@class]/text()'
+Cuerpo = '//div[@class="html-content"]/p/text()'
