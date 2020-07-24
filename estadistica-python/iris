@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<costo-millones-usd &le; 81.0<br/>entropy = 2.44<br/>samples = 447<br/>value = [119, 24, 138, 80, 40, 13, 33]<br/>class = Drama>, fillcolor="#f4fdf5"] ;
+1 [label=<ratings-audiencia &le; 72.5<br/>entropy = 2.424<br/>samples = 365<br/>value = [64, 16, 130, 78, 40, 13, 24]<br/>class = Drama>, fillcolor="#dbfadf"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<costo-millones-usd &le; 20.5<br/>entropy = 2.378<br/>samples = 290<br/>value = [56, 12, 112, 45, 40, 10, 15]<br/>class = Drama>, fillcolor="#d0f9d4"] ;
+1 -> 2 ;
+3 [label=<entropy = 2.098<br/>samples = 103<br/>value = [8, 2, 46, 20, 22, 4, 1]<br/>class = Drama>, fillcolor="#c4f7ca"] ;
+2 -> 3 ;
+4 [label=<entropy = 2.412<br/>samples = 187<br/>value = [48, 10, 66, 25, 18, 6, 14]<br/>class = Drama>, fillcolor="#e5fce8"] ;
+2 -> 4 ;
+5 [label=<ratings-audiencia &le; 83.5<br/>entropy = 2.138<br/>samples = 75<br/>value = [8, 4, 18, 33, 0, 3, 9]<br/>class = Horror>, fillcolor="#cbf8f7"] ;
+1 -> 5 ;
+6 [label=<entropy = 1.977<br/>samples = 50<br/>value = [6, 0, 15, 19, 0, 1, 9]<br/>class = Horror>, fillcolor="#e8fcfc"] ;
+5 -> 6 ;
+7 [label=<entropy = 1.842<br/>samples = 25<br/>value = [2, 4, 3, 14, 0, 2, 0]<br/>class = Horror>, fillcolor="#a1f3f1"] ;
+5 -> 7 ;
+8 [label=<ratings-audiencia &le; 39.0<br/>entropy = 1.522<br/>samples = 82<br/>value = [55, 8, 8, 2, 0, 0, 9]<br/>class = Comedy>, fillcolor="#efb082"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label=<ratings-audiencia &le; 36.0<br/>entropy = 1.5<br/>samples = 4<br/>value = [0, 0, 1, 2, 0, 0, 1]<br/>class = Horror>, fillcolor="#bdf6f5"] ;
+8 -> 9 ;
+10 [label=<entropy = 1.0<br/>samples = 2<br/>value = [0, 0, 1, 0, 0, 0, 1]<br/>class = Drama>, fillcolor="#ffffff"] ;
+9 -> 10 ;
+11 [label=<entropy = 0.0<br/>samples = 2<br/>value = [0, 0, 0, 2, 0, 0, 0]<br/>class = Horror>, fillcolor="#39e5e2"] ;
+9 -> 11 ;
+12 [label=<costo-millones-usd &le; 91.5<br/>entropy = 1.341<br/>samples = 78<br/>value = [55, 8, 7, 0, 0, 0, 8]<br/>class = Comedy>, fillcolor="#eeaa7a"] ;
+8 -> 12 ;
+13 [label=<entropy = 1.432<br/>samples = 14<br/>value = [7, 0, 5, 0, 0, 0, 2]<br/>class = Comedy>, fillcolor="#f9e3d3"] ;
+12 -> 13 ;
+14 [label=<entropy = 1.163<br/>samples = 64<br/>value = [48, 8, 2, 0, 0, 0, 6]<br/>class = Comedy>, fillcolor="#eca572"] ;
+12 -> 14 ;
+}
