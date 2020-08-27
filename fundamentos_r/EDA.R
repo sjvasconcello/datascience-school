@@ -118,7 +118,7 @@ ggplot(mtcars, aes(x=as.factor(cyl), y=hp, fill=cyl))+
         panel.grid.minor = element_blank())
 
 
-mtcars$am <- factor(mtcars$am, levels = c("Manual, Automatico1","Manual, Automatico2"), 
+mtcars$am <- factor(mtcars$am, levels = c(0,1), 
                     labels=c("Manual","Automantico"))
 
 ggplot(mtcars, aes(x=as.factor(am), y=mpg, fill=am)) +
@@ -210,5 +210,22 @@ ggplot(orange, aes(Education.invest...GDP,
        title="Caballos-velocidad segun cilindraje y tipo de caja")
 
 
+plot(orange$Creat.Ind...GDP ~ orange$Education.invest...GDP, 
+     xlab="Inversión eduación", 
+     ylab="Desempleo", 
+     main="Inversion v/s Desempleo")
+str(mtcars)
+
+ggplot(orange, aes(x=Strong_economy, y=Internet.penetration...population)) +
+  geom_boxplot()
 
 
+ggplot(orange, aes(x=Creat.Ind...GDP)) +
+  geom_histogram() 
+
+glimpse(mtcars)
+
+pairs(mtcars)
+orange$Creat.Ind...GDP
+str(mtcars)
+cor(orange)

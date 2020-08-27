@@ -1,0 +1,67 @@
+---
+title: "Economia Naranja"
+author: "Santiago Vasconcello"
+date: "August 23, 2020"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+
+```{r}
+orange <- read.csv("~/Documents/datascience-school/fundamentos_r/orange.csv",
+                   header=TRUE, comment.char="#")
+data(orange)
+summary(orange)
+```
+
+Parece que hay correlacion entre aporte de economia naranja al pib y la tasa de desempleo
+
+```{r}
+pairs(orange[,6:10])
+```
+
+```{r}
+ggplot() + geom_histogram(data=orange, 
+                          aes(x=Creat.Ind...GDP), 
+                          fill="blue",
+                          color="red",
+                          binwidth = 1) +
+  labs(x="Aporte economia naranja al pib (%)", 
+       y="Cantidad de paises", 
+       title="Contribución economia naraja al pib en paises latam") +
+  theme(legend.position = "none") +
+  theme(panel.background = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())
+x```
+
+```{r}
+
+economy <- mean(orange$GDP.PC)
+economy
+
+orange <- orange %>% 
+  mutate(Strong_economy= ifelse(GDP.PC < economy, 
+                                "Debajo del promedio", 
+                                "Arriba del promedio"))
+
+```
+
+
+```{r}
+ggplot(orange, aes(x=Strong_economy, y=Internet.penetration...population,
+                   fill=Strong_economy)) +
+  geom_boxplot(alpha=0.4) +
+  labs(x="Tipo de pais", 
+       y="Penetracion de internet",
+       title="Penetracion de internet en paises con alto y bajo PIB per capita") +
+  theme(legend.position = "none") + 
+  theme(panel.background = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())
+
+```

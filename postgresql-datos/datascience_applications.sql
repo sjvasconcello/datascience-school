@@ -1,0 +1,6 @@
+CREATE OR REPLACE FUNCTION movies_stats()
+RETURN VOID
+LANGUAGE plpgsql
+AS $$
+
+$$
