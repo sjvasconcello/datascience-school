@@ -226,6 +226,7 @@ ggplot(orange, aes(x=Creat.Ind...GDP)) +
 glimpse(mtcars)
 
 pairs(mtcars)
+pairs(orange)
 orange$Creat.Ind...GDP
 str(mtcars)
 cor(orange)
